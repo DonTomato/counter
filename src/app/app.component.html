@@ -1,0 +1,58 @@
+<div (window:keydown)="shortcutPressed($event)" class="section" (keyup.enter)="showDetails = true">
+    <div class="container">
+        <div id="main">
+            <div class="level is-mobile">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">days</p>
+                        <p class="title">{{days}}</p>
+                    </div>
+                </div>
+
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">hours</p>
+                        <p class="title">{{hours}}</p>
+                    </div>
+                </div>
+
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">minutes</p>
+                        <p class="title">{{minutes}}</p>
+                    </div>
+                </div>
+
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">seconds</p>
+                        <p class="title">{{seconds}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="showDetails" class="level is-mobile">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">hours</p>
+                        <p class="title">{{tHours}}</p>
+                    </div>
+                </div>
+            
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">minutes</p>
+                        <p class="title">{{tMinutes}}</p>
+                    </div>
+                </div>
+            
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">seconds</p>
+                        <p class="title">{{tSeconds}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
