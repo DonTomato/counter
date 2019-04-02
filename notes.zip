@@ -1,0 +1,6 @@
+/etc/nginx/conf.d/default.conf
+/var/www/html/mv
+
+deploy by dropbox
+wget -O mv.zip https://db.com/adhsfghh
+unzip mv.zip -d destination_folder
