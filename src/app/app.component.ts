@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { timer, Observable } from 'rxjs';
 import * as moment from 'moment';
 
@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
       this.tHours = Math.trunc(d.asHours());
       this.tMinutes = Math.trunc(d.asMinutes());
       this.tSeconds = Math.trunc(d.asSeconds());
+
+      this.percentage = (d.asDays() / (365 * 5)) * 100;
+
+      this.percentage = Math.trunc(this.percentage * 1000) / 1000;
     });
   }
 
@@ -45,9 +49,16 @@ export class AppComponent implements OnInit {
   tMinutes: number = 0;
   tSeconds: number = 0;
 
+  percentage: number = 0;
+
   shortcutPressed(value: any): void {
     if (value.key == "Enter") {
       this.showDetails = !this.showDetails;
     }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(e: MouseEvent) {
+    this.showDetails = !this.showDetails;
   }
 }

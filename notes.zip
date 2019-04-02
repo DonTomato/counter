@@ -1,3 +1,5 @@
+ng build --prod --output-hashing=all
+
 /etc/nginx/conf.d/default.conf
 /var/www/html/mv
 

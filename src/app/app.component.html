@@ -1,6 +1,15 @@
 <div (window:keydown)="shortcutPressed($event)" class="section" (keyup.enter)="showDetails = true">
     <div class="container">
         <div id="main">
+            <div *ngIf="showDetails" class="level is-mobile">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">HEALTH</p>
+                        <p class="title has-text-danger">{{percentage}} %</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="level is-mobile">
                 <div class="level-item has-text-centered">
                     <div>
