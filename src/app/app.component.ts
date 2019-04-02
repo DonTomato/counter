@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   showDetails: boolean = false;
 
   ngOnInit(): void {
-    this._startDate = new Date(2018, 11, 8, 11, 8, 0, 0);
+    this._startDate = new Date(2019, 3, 1, 23, 13, 0, 0);
     this._timer = timer(0, 1000);
     this._timer.subscribe(t => {
       const current = new Date();
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       var ms = moment(Date.now()).diff(moment(this._startDate));
       var d = moment.duration(ms);
       
-      this.days = d.days();
+      this.days = Math.trunc(d.asDays());
       this.hours = d.hours();
       this.minutes = d.minutes();
       this.seconds = d.seconds();
