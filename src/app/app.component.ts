@@ -1,64 +1,38 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { timer, Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  initial: moment.Moment;
 
-  _startDate: Date;
-  private _timer: Observable<number>;
-  showDetails: boolean = false;
+  months: number;
+  weaks: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 
+  
   ngOnInit(): void {
-    this._startDate = new Date(2019, 6, 7, 17, 43, 20, 0);
-    this._timer = timer(0, 1000);
-    this._timer.subscribe(t => {
-      const current = new Date();
-      
-      let sm = moment(this._startDate);
-      let cm = moment(Date.now());
+    this.initial = moment('2020-03-22 22:45:00.000');
+    this.calculate();
 
-      var ms = moment(Date.now()).diff(moment(this._startDate));
-      var d = moment.duration(ms);
-      
-      this.days = Math.trunc(d.asDays());
-      this.hours = d.hours();
-      this.minutes = d.minutes();
-      this.seconds = d.seconds();
-
-      this.tHours = Math.trunc(d.asHours());
-      this.tMinutes = Math.trunc(d.asMinutes());
-      this.tSeconds = Math.trunc(d.asSeconds());
-
-      this.percentage = (d.asDays() / (365 * 5)) * 100;
-
-      this.percentage = Math.trunc(this.percentage * 1000) / 1000;
-    });
+    setInterval(_ => this.calculate(), 1000);
   }
 
-  days: number = 0;
-  hours: number = 0;
-  minutes: number = 0;
-  seconds: number = 0;
+  calculate(): void {
+    const current = moment();
 
-  tHours: number = 0;
-  tMinutes: number = 0;
-  tSeconds: number = 0;
-
-  percentage: number = 0;
-
-  shortcutPressed(value: any): void {
-    if (value.key == "Enter") {
-      this.showDetails = !this.showDetails;
-    }
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(e: MouseEvent) {
-    this.showDetails = !this.showDetails;
+    this.months = current.diff(this.initial, 'months');
+    this.days = current.diff(this.initial, 'days');
+    this.hours = current.diff(this.initial, 'hours');
+    this.minutes = current.diff(this.initial, 'minutes');
+    this.seconds = current.diff(this.initial, 'seconds');
   }
 }

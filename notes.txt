@@ -6,3 +6,6 @@ ng build --prod --output-hashing=all
 deploy by dropbox
 wget -O mv.zip https://db.com/adhsfghh
 unzip mv.zip -d destination_folder
+
+Что-бы отключить аналитику гугла, необходимо выполнить комманду
+    ng analytics project off 
