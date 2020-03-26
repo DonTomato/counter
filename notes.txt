@@ -9,3 +9,6 @@ unzip mv.zip -d destination_folder
 
 Что-бы отключить аналитику гугла, необходимо выполнить комманду
     ng analytics project off 
+
+Используемый здесь шрифт
+    https://sourcefoundry.org/hack/
