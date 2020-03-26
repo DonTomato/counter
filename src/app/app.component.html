@@ -1,7 +1,26 @@
 <div class="main-container">
-    <div>Months: {{months}}</div>
-    <div>Days: {{days}}</div>
-    <div>Hours: {{hours}}</div>
-    <div>Minutes: {{minutes}}</div>
-    <div>Seconds: {{seconds}}</div>
+    <div class="block">
+        <div class="label">Months</div>
+        <div class="value">{{months}}</div>
+    </div>
+
+    <div class="block">
+        <div class="label">Days</div>
+        <div class="value">{{days}}</div>
+    </div>
+
+    <div class="block">
+        <div class="label">Hours</div>
+        <div class="value">{{hours}}</div>
+    </div>
+
+    <div class="block">
+        <div class="label">Minutes</div>
+        <div class="value">{{minutes}}</div>
+    </div>
+
+    <div class="block">
+        <div class="label">Seconds</div>
+        <div class="value">{{seconds | number: '2.'}}</div>
+    </div>
 </div>

@@ -1,3 +1,26 @@
 .main-container {
+  display: flex;
+  flex-direction: column;
+
+  color: #00364d;
+
   margin: 10px;
+
+  .block {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 25px;
+
+    > .label {
+      width: 150px;
+    }
+
+    > .value {
+      flex: 1;
+      font-size: 48px;
+
+      text-align: right;
+    }
+  }
 }
