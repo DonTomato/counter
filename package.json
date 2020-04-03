@@ -1,6 +1,6 @@
 {
-  "name": "counter",
-  "version": "2.0.0",
+  "name": "mvoronov",
+  "version": "2.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

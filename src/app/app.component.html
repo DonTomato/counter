@@ -23,4 +23,13 @@
         <div class="label">Seconds</div>
         <div class="value">{{seconds | number: '2.'}}</div>
     </div>
+
+    <div class="block">
+        <div class="label">
+            <a (click)="generatePassword()">PWD</a>
+        </div>
+        <div class="value pwd">
+            {{password}}
+        </div>
+    </div>
 </div>

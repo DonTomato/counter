@@ -27,6 +27,12 @@
 
     > .label {
       width: 150px;
+
+      a {
+        text-decoration: underline;
+        color: blue;
+        cursor: pointer;
+      }
     }
 
     > .value {
@@ -34,6 +40,10 @@
       font-size: 48px;
 
       text-align: right;
+    }
+
+    > .value.pwd {
+      font-size: 30px;
     }
   }
 }
