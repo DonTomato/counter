@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   initial: moment.Moment;
 
   months: number;
+  monthsProgress: number = 0;
   weaks: number;
   days: number;
   hours: number;
@@ -35,6 +36,8 @@ export class AppComponent implements OnInit {
     this.hours = current.diff(this.initial, 'hours');
     this.minutes = current.diff(this.initial, 'minutes');
     this.seconds = current.diff(this.initial, 'seconds');
+
+    this.monthsProgress = this.getPercentage(current, 'months');
   }
 
   generatePassword(): void {
@@ -56,5 +59,15 @@ export class AppComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  private getPercentage(current: moment.Moment, type: string): number {
+    // const startIntervalMoment = this.initial.add(this.months, 'months');
+    // const endIntervalMoment = this.initial.add(this.months + 1, 'months');
+
+    // const total = endIntervalMoment.diff(startIntervalMoment, 'seconds');
+    // const pass = this.initial.add(this.months, 'months').diff(current, 'seconds');
+    // console.log('J', total);
+    return this.monthsProgress + 1; //(pass / total) * 100;
   }
 }

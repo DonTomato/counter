@@ -1,35 +1,39 @@
 <div class="main-container">
-    <div class="block">
-        <div class="label">Months</div>
-        <div class="value">{{months}}</div>
-    </div>
-
-    <div class="block">
-        <div class="label">Days</div>
-        <div class="value">{{days}}</div>
-    </div>
-
-    <div class="block">
-        <div class="label">Hours</div>
-        <div class="value">{{hours}}</div>
-    </div>
-
-    <div class="block">
-        <div class="label">Minutes</div>
-        <div class="value">{{minutes}}</div>
-    </div>
-
-    <div class="block">
-        <div class="label">Seconds</div>
-        <div class="value">{{seconds | number: '2.'}}</div>
-    </div>
-
-    <div class="block">
-        <div class="label">
-            <a (click)="generatePassword()">PWD</a>
+    <div class="content">
+        <div class="block">
+            <div class="label">Months</div>
+            <div class="value">{{months}}</div>
         </div>
-        <div class="value pwd">
-            {{password}}
+
+        <!-- <progress value="{{monthsProgress}}" max="100" style="width: 100%;"></progress> -->
+        
+        <div class="block">
+            <div class="label">Days</div>
+            <div class="value">{{days}}</div>
+        </div>
+        
+        <div class="block">
+            <div class="label">Hours</div>
+            <div class="value">{{hours}}</div>
+        </div>
+        
+        <div class="block">
+            <div class="label">Minutes</div>
+            <div class="value">{{minutes}}</div>
+        </div>
+        
+        <div class="block">
+            <div class="label">Seconds</div>
+            <div class="value">{{seconds | number: '2.'}}</div>
+        </div>
+        
+        <div class="block">
+            <div class="label">
+                <a (click)="generatePassword()">PWD</a>
+            </div>
+            <div class="value pwd">
+                {{password}}
+            </div>
         </div>
     </div>
 </div>
