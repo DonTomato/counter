@@ -4,13 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { CounterPageComponent } from './counter-page/counter-page.component';
+import { PwdPageComponent } from './pwd-page/pwd-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CounterPageComponent,
+    PwdPageComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

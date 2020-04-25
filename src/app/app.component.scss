@@ -1,64 +1,28 @@
-$container-width: 800px;
-
-.main-container {
+.menu {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
 
-  // color: #00364d;
-  color: #f68c0e;
+  margin: 15px 0;
 
-  .content {
-    padding: 10px;
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 
-    min-width: $container-width;
+    a {
+      text-decoration: none;
+      color: #1e55b9;
+      padding: 7px 15px;
+      border: 1px solid #1e55b9;
+      border-radius: 5px;
 
-    @media only screen and (max-width: $container-width) {
-      align-content: flex-start;
-      min-width: auto;
-      flex: 1;
+      min-width: 90px;
+      text-align: center;
     }
 
-    .block {
-      display: flex;
-      flex-direction: column;
-
-      max-width: 800px;
-      
-      @media only screen and (max-width: $container-width) {
-        max-width: none;
-      }
-
-      margin-top: 25px;
-
-      > .label {
-        width: 150px;
-
-        a {
-          text-decoration: underline;
-          color: blue;
-          cursor: pointer;
-        }
-      }
-
-      > .value {
-        flex: 1;
-        font-size: 48px;
-
-        text-align: right;
-      }
-
-      > .value.pwd {
-        font-size: 30px;
-      }
-    }
-
-    progress {
-      border: 0;
-      height: 5px;
-      // background: rgb(183, 255, 213);
-      // color: blue;
+    a.active {
+      background-color: #040f33;
+      color: #92b1ea;
     }
   }
 }
