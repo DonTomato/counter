@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { timer } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +10,13 @@ export class AppComponent implements OnInit {
   initial: moment.Moment;
 
   months: number;
-  monthsProgress: number = 0;
   weaks: number;
   days: number;
   hours: number;
   minutes: number;
   seconds: number;
+
+  monthsProgress = 0;
 
   password: string;
 
@@ -37,7 +36,7 @@ export class AppComponent implements OnInit {
     this.minutes = current.diff(this.initial, 'minutes');
     this.seconds = current.diff(this.initial, 'seconds');
 
-    this.monthsProgress = this.getPercentage(current, 'months');
+    this.monthsProgress = this.getPercentage();
   }
 
   generatePassword(): void {
@@ -61,13 +60,13 @@ export class AppComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
-  private getPercentage(current: moment.Moment, type: string): number {
+  private getPercentage(): number {
     // const startIntervalMoment = this.initial.add(this.months, 'months');
     // const endIntervalMoment = this.initial.add(this.months + 1, 'months');
 
     // const total = endIntervalMoment.diff(startIntervalMoment, 'seconds');
     // const pass = this.initial.add(this.months, 'months').diff(current, 'seconds');
     // console.log('J', total);
-    return this.monthsProgress + 1; //(pass / total) * 100;
+    return this.monthsProgress + 1; // (pass / total) * 100;
   }
 }
