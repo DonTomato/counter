@@ -1,0 +1,34 @@
+.block {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 800px;
+  color: #f68c0e;
+  
+  @media only screen and (max-width: 800px) {
+    max-width: none;
+  }
+
+  margin-top: 25px;
+
+  > .label {
+    width: 150px;
+
+    a {
+      text-decoration: underline;
+      color: blue;
+      cursor: pointer;
+    }
+  }
+
+  > .value {
+    flex: 1;
+    font-size: 48px;
+
+    text-align: right;
+  }
+
+  > .value.pwd {
+    font-size: 30px;
+  }
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+// import { faCoffee, faCannabis } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-counter-page',
@@ -18,7 +19,8 @@ export class CounterPageComponent implements OnInit {
 
   monthsProgress = 0;
 
-  password: string;
+  // faCoffe = faCoffee;
+  // faCannabis = faCannabis;
 
   ngOnInit(): void {
     this.initial = moment('2020-03-22 22:45:00.000');
@@ -37,27 +39,6 @@ export class CounterPageComponent implements OnInit {
     this.seconds = current.diff(this.initial, 'seconds');
 
     this.monthsProgress = this.getPercentage();
-  }
-
-  generatePassword(): void {
-    const a: any[] = [0, 1, 2];
-    a.forEach((_, i) => a[i] = Math.random().toString(36).slice(5, 10));
-    this.password = `${a[0]}-${a[1]}-${a[2]}`;
-    this.copyToClipboard(this.password);
-  }
-
-  copyToClipboard(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
   }
 
   private getPercentage(): number {

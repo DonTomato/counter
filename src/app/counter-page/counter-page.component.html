@@ -1,5 +1,49 @@
+<div class="counter-list">
+    <div class="row">
+        <div class="indicator"></div>
+        <div class="counter-block">
+            <div class="value">{{months}}</div>
+            <div class="label">Month</div>
+        </div>
+    </div>
 
-<div class="block">
+    <div class="row">
+        <div class="indicator"></div>
+        <div class="counter-block">
+            <div class="value">{{days}}</div>
+            <div class="label">Days</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="indicator"></div>
+        <div class="counter-block">
+            <div class="value">{{hours}}</div>
+            <div class="label">Hours</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="indicator"></div>
+        <div class="counter-block">
+            <div class="value">{{minutes | number: '2.'}}</div>
+            <div class="label">Minutes</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="indicator"></div>
+        <div class="counter-block">
+            <div class="value">{{seconds | number: '2.'}}</div>
+            <div class="label">Seconds</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="block">
     <div class="label">Months</div>
     <div class="value">{{months}}</div>
 </div>
@@ -22,13 +66,4 @@
 <div class="block">
     <div class="label">Seconds</div>
     <div class="value">{{seconds | number: '2.'}}</div>
-</div>
-
-<div class="block">
-    <div class="label">
-        <a (click)="generatePassword()">PWD</a>
-    </div>
-    <div class="value pwd">
-        {{password}}
-    </div>
-</div>
+</div> -->
