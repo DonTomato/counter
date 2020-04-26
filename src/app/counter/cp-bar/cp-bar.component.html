@@ -1,6 +1,16 @@
 <!-- <pre>{{list | json}}</pre> -->
 
 <svg class="progress-ring" [attr.width]="size" [attr.height]="size" [style.transform]="transformValue">
+    
+    <circle *ngFor="let p of list" class="progress-ring-circle-back" 
+        stroke="#25272d"
+        [attr.stroke-width]="strokeSize" 
+        fill="transparent" 
+        [attr.r]="p.radius" 
+        [attr.cx]="size / 2" 
+        [attr.cy]="size / 2">
+    </circle>
+
     <circle *ngFor="let p of list" class="progress-ring-circle" 
         [attr.stroke]="p.progress.color" 
         [attr.stroke-width]="strokeSize" 
