@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CounterPageComponent } from './counter-page/counter-page.component';
+import { CounterPageComponent } from './counter/counter-page/counter-page.component';
 import { PwdPageComponent } from './pwd-page/pwd-page.component';
 
 

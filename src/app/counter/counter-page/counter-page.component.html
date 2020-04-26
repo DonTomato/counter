@@ -1,6 +1,8 @@
 <div class="counter-list">
     <div class="row">
-        <div class="indicator"></div>
+        <div class="indicator">
+            <app-cp-bar [scale]="0.4" [progressList]="list"></app-cp-bar>
+        </div>
         <div class="counter-block">
             <div class="value">{{months}}</div>
             <div class="label">Month</div>
@@ -40,30 +42,6 @@
     </div>
 </div>
 
+<!-- <app-cp-bar [scale]="1" [progressList]="list"></app-cp-bar> -->
 
-
-
-<!-- <div class="block">
-    <div class="label">Months</div>
-    <div class="value">{{months}}</div>
-</div>
-
-<div class="block">
-    <div class="label">Days</div>
-    <div class="value">{{days}}</div>
-</div>
-
-<div class="block">
-    <div class="label">Hours</div>
-    <div class="value">{{hours}}</div>
-</div>
-
-<div class="block">
-    <div class="label">Minutes</div>
-    <div class="value">{{minutes}}</div>
-</div>
-
-<div class="block">
-    <div class="label">Seconds</div>
-    <div class="value">{{seconds | number: '2.'}}</div>
-</div> -->
+<app-cp-bar [scale]="0.4" [progressList]="list"></app-cp-bar>

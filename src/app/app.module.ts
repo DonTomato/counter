@@ -5,15 +5,17 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
-import { CounterPageComponent } from './counter-page/counter-page.component';
+import { CounterPageComponent } from './counter/counter-page/counter-page.component';
 import { PwdPageComponent } from './pwd-page/pwd-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CpBarComponent } from './counter/cp-bar/cp-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterPageComponent,
-    PwdPageComponent
+    PwdPageComponent,
+    CpBarComponent
   ],
   imports: [
     BrowserModule,
