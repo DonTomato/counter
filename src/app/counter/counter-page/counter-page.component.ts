@@ -18,19 +18,21 @@ export class CounterPageComponent implements OnInit {
   minutes: number;
   seconds: number;
 
-  monthsProgress = 0;
-
-  list: ProgressDataModel[] = [
+  monthList: ProgressDataModel[] = [
     { color: '#ff3737', percentage: 95 },
     { color: '#6578fd', percentage: 57 },
-    { color: '#65fda9', percentage: 25 }
+    // { color: '#65fda9', percentage: 25 }
   ];
+  dayList: ProgressDataModel[] = [];
+  hourList: ProgressDataModel[] = [];
+  minuteList: ProgressDataModel[] = [];
+  secondList: ProgressDataModel[] = [];
 
   ngOnInit(): void {
     this.initial = moment('2020-03-22 22:45:00.000');
     this.calculate();
 
-    setInterval(_ => this.calculate(), 1000);
+    setInterval(_ => this.calculate(), 30);
   }
 
   calculate(): void {
@@ -42,22 +44,69 @@ export class CounterPageComponent implements OnInit {
     this.minutes = current.diff(this.initial, 'minutes');
     this.seconds = current.diff(this.initial, 'seconds');
 
-    this.monthsProgress = this.getPercentage();
+    this.monthList = this.calculateProgress(this.months, 'months');
+    this.dayList = this.calculateProgress(this.days, 'days');
+    this.hourList = this.calculateProgress(this.hours, 'hours');
+    this.minuteList = this.calculateProgress(this.minutes, 'minutes');
+    this.secondList = this.calculateProgress(this.seconds, 'seconds');
 
-    this.list[2].percentage = this.list[2].percentage + 10;
-    this.list[1].percentage = this.list[1].percentage + 5;
-    this.list = [
-      ...this.list
+    // this.monthsProgress = this.getPercentage();
+    // console.log('P', this.monthsProgress);
+
+    // this.monthList[1].percentage = this.monthList[1].percentage + 10;
+    // this.monthList[0].percentage = this.monthList[0].percentage + 0;
+    // this.monthList = [
+    //   ...this.monthList
+    // ];
+  }
+
+  private calculateProgress(currentCounter: number, unit: moment.unitOfTime.DurationConstructor): ProgressDataModel[] {
+    return [
+      { color: '#ff3737', percentage: this.getPercentageForZeros(currentCounter, 0, unit) },
+      { color: '#65fda9', percentage: this.getPercentageForZeros(currentCounter, 1, unit) },
+      { color: '#6578fd', percentage: this.getPercentageForZeros(currentCounter, 2, unit) },
+      { color: '#fbff12', percentage: this.getPercentageForNext(currentCounter, unit) }
     ];
   }
 
-  private getPercentage(): number {
-    // const startIntervalMoment = this.initial.add(this.months, 'months');
-    // const endIntervalMoment = this.initial.add(this.months + 1, 'months');
+  private getPercentageForNext(currentCounter: number, unit: moment.unitOfTime.DurationConstructor): number {
+    const startIntervalMoment = moment(this.initial).add(currentCounter, unit);
+    const endIntervalMoment = moment(this.initial).add(currentCounter + 1, unit);
 
-    // const total = endIntervalMoment.diff(startIntervalMoment, 'seconds');
-    // const pass = this.initial.add(this.months, 'months').diff(current, 'seconds');
-    // console.log('J', total);
-    return this.monthsProgress + 1; // (pass / total) * 100;
+    const current = moment();
+
+    const total = endIntervalMoment.diff(startIntervalMoment, 'millisecond');
+    const pass = current.diff(startIntervalMoment, 'millisecond');
+    return (pass / total) * 100;
+  }
+
+  private getPercentageForZeros(currentCounter: number, st: number, unit: moment.unitOfTime.DurationConstructor): number {
+    if (currentCounter.toString().length - 1 < st) {
+      return 0;
+    }
+    const maxDigit = Number(currentCounter.toString()[st]);
+
+    let next = maxDigit + 1;
+    for (const x of Array(currentCounter.toString().length - 1 - st).keys()) {
+      next = next * 10;
+    }
+
+    let prev = 1;
+    if (currentCounter > 1) {
+      prev = maxDigit === 1 ? 9 : maxDigit;
+      const toIter = maxDigit === 1 ? currentCounter.toString().length - 2 - st : currentCounter.toString().length - 1 - st;
+      for (const x of Array(toIter).keys()) {
+        prev = prev * 10;
+      }
+    }
+
+    const startIntervalMoment = moment(this.initial).add(prev, unit);
+    const endIntervalMoment = moment(this.initial).add(next, unit);
+
+    const current = moment();
+
+    const total = endIntervalMoment.diff(startIntervalMoment, 'millisecond');
+    const pass = current.diff(startIntervalMoment, 'millisecond');
+    return (pass / total) * 100;
   }
 }

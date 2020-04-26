@@ -11,17 +11,16 @@ export class CpBarComponent implements OnChanges {
   scale = 1;
 
   @Input()
-  size = 60;
+  size = 45;
+
+  @Input()
+  strokeSize = 3;
 
   @Input()
   progressList: ProgressDataModel[];
 
   list: ProgressCircle[];
-
   transformValue: string;
-
-  readonly WIDTH = 120;
-  readonly STROKE_WIDTH = 8;
 
   ngOnChanges(): void {
     this.transformValue = `scale(${this.scale})`;
@@ -43,7 +42,7 @@ export class CpBarComponent implements OnChanges {
   }
 
   private getRadius(index: number): number {
-    return (this.WIDTH - this.STROKE_WIDTH * 2.5 * index) / 2 - this.STROKE_WIDTH / 2;
+    return (this.size - this.strokeSize * 2.5 * index) / 2 - this.strokeSize / 2;
   }
 }
 

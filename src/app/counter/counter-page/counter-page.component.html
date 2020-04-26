@@ -1,7 +1,7 @@
 <div class="counter-list">
     <div class="row">
         <div class="indicator">
-            <app-cp-bar [scale]="0.4" [progressList]="list"></app-cp-bar>
+            <app-cp-bar [scale]="1" [size]="45" [progressList]="monthList"></app-cp-bar>
         </div>
         <div class="counter-block">
             <div class="value">{{months}}</div>
@@ -10,7 +10,9 @@
     </div>
 
     <div class="row">
-        <div class="indicator"></div>
+        <div class="indicator">
+            <app-cp-bar [scale]="1" [size]="45" [progressList]="dayList"></app-cp-bar>
+        </div>
         <div class="counter-block">
             <div class="value">{{days}}</div>
             <div class="label">Days</div>
@@ -18,7 +20,9 @@
     </div>
 
     <div class="row">
-        <div class="indicator"></div>
+        <div class="indicator">
+            <app-cp-bar [scale]="1" [size]="45" [progressList]="hourList"></app-cp-bar>
+        </div>
         <div class="counter-block">
             <div class="value">{{hours}}</div>
             <div class="label">Hours</div>
@@ -26,7 +30,9 @@
     </div>
 
     <div class="row">
-        <div class="indicator"></div>
+        <div class="indicator">
+            <app-cp-bar [scale]="1" [size]="45" [progressList]="minuteList"></app-cp-bar>
+        </div>
         <div class="counter-block">
             <div class="value">{{minutes | number: '2.'}}</div>
             <div class="label">Minutes</div>
@@ -34,14 +40,12 @@
     </div>
 
     <div class="row">
-        <div class="indicator"></div>
+        <div class="indicator">
+            <app-cp-bar [scale]="1" [size]="45" [progressList]="secondList"></app-cp-bar>
+        </div>
         <div class="counter-block">
             <div class="value">{{seconds | number: '2.'}}</div>
             <div class="label">Seconds</div>
         </div>
     </div>
 </div>
-
-<!-- <app-cp-bar [scale]="1" [progressList]="list"></app-cp-bar> -->
-
-<app-cp-bar [scale]="0.4" [progressList]="list"></app-cp-bar>
