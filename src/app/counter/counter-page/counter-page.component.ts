@@ -36,7 +36,7 @@ export class CounterPageComponent implements OnInit {
   }
 
   calculate(): void {
-    const current = moment();
+    const current = this.getCurrentMoment();
 
     this.months = current.diff(this.initial, 'months');
     this.days = current.diff(this.initial, 'days');
@@ -60,6 +60,11 @@ export class CounterPageComponent implements OnInit {
     // ];
   }
 
+  private getCurrentMoment(): moment.Moment {
+    // return moment();
+    return moment('2020-04-22 23:47:15.546');
+  }
+
   private calculateProgress(currentCounter: number, unit: moment.unitOfTime.DurationConstructor): ProgressDataModel[] {
     return [
       { color: '#ff3737', percentage: this.getPercentageForZeros(currentCounter, 0, unit) },
@@ -73,7 +78,7 @@ export class CounterPageComponent implements OnInit {
     const startIntervalMoment = moment(this.initial).add(currentCounter, unit);
     const endIntervalMoment = moment(this.initial).add(currentCounter + 1, unit);
 
-    const current = moment();
+    const current = this.getCurrentMoment();
 
     const total = endIntervalMoment.diff(startIntervalMoment, 'millisecond');
     const pass = current.diff(startIntervalMoment, 'millisecond');
@@ -93,20 +98,27 @@ export class CounterPageComponent implements OnInit {
 
     let prev = 1;
     if (currentCounter > 1) {
-      prev = maxDigit === 1 ? 9 : maxDigit;
-      const toIter = maxDigit === 1 ? currentCounter.toString().length - 2 - st : currentCounter.toString().length - 1 - st;
-      for (const x of Array(toIter).keys()) {
-        prev = prev * 10;
+      prev = maxDigit === 0
+        ? 9
+        : maxDigit;
+      const toIter = maxDigit === 0 ? currentCounter.toString().length - 2 - st : currentCounter.toString().length - 1 - st;
+      if (toIter > 0) {
+        for (const x of Array(toIter).keys()) {
+          prev = prev * 10;
+        }
+      } else {
+        return 0;
       }
     }
 
     const startIntervalMoment = moment(this.initial).add(prev, unit);
     const endIntervalMoment = moment(this.initial).add(next, unit);
 
-    const current = moment();
+    const current = this.getCurrentMoment();
 
     const total = endIntervalMoment.diff(startIntervalMoment, 'millisecond');
     const pass = current.diff(startIntervalMoment, 'millisecond');
-    return (pass / total) * 100;
+    const result = (pass / total) * 100;
+    return result;
   }
 }
