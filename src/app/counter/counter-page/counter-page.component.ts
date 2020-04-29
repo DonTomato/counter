@@ -61,8 +61,8 @@ export class CounterPageComponent implements OnInit {
   }
 
   private getCurrentMoment(): moment.Moment {
-    // return moment();
-    return moment('2020-04-22 23:47:15.546');
+    return moment();
+    // return moment('2020-04-22 23:47:15.546');
   }
 
   private calculateProgress(currentCounter: number, unit: moment.unitOfTime.DurationConstructor): ProgressDataModel[] {
